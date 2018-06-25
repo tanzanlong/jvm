@@ -17,16 +17,22 @@ public class OioWithoutNetty {
 					@Override
 					public void run() {
 						OutputStream out;
-						
-						out=cliensocket.getOutputStream();
-						out.write("hi".getBytes(Charset.forName("UTF-8")));
-						out.flush();
-						cliensocket.close();
+                      
+                        try {
+                            out = cliensocket.getOutputStream();
+                            out.flush();
+                            cliensocket.close();
+                            out.write("hi".getBytes(Charset.forName("UTF-8")));
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+					
 					}
 				}).start();
 			}
 			
-		}catch() {
+		}catch(Exception e) {
 			
 		}
 		

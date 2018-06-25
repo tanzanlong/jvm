@@ -21,8 +21,7 @@ public class TimerClient {
 		  f.channel().closeFuture().sync();
 	} catch (InterruptedException e) {
 		e.printStackTrace();
-		bossGroup.shutdownGracefully();
-		workerGroup.shutdownGracefully();
+		group.shutdownGracefully();
 	}
 	
   }
